@@ -519,26 +519,3 @@ task.wait(1.5)
 TweenService:Create(Intro, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {BackgroundTransparency = 1}):Play()
 
 return lib
-
-local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Godmey/UiTest/refs/heads/main/Test.lua"))()
-
-lib:SetTitle("Rimuru Hub | 4Bing")
-lib:AddButton("Button", function()
-    print("Clicked!")
-end)
-lib:AddToggle("Toggle", function(state)
-    if state then
-        print('On!')
-    else
-        print('Off!')
-    end
-end, false)
-lib:AddComboBox("ComboBox", {"1", "2", "3"}, function(selection)
-    if selection == "1" then
-        print("Selected 1")
-    elseif selection == "2" then
-        print("Selected 2")
-    elseif selection == "3" then
-        print("Selected 3")
-    end
-end)
