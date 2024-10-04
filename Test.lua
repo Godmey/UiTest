@@ -23,7 +23,6 @@ local Button = Instance.new("ImageButton")
 local Name_2 = Instance.new("TextLabel")
 local UIGradient_2 = Instance.new("UIGradient")
 local tab = Instance.new("Frame")
-local Close = Instance.new("TextButton")
 local ComboElem = Instance.new("ImageButton")
 local Name_3 = Instance.new("TextLabel")
 local UIGradient_3 = Instance.new("UIGradient")
@@ -188,20 +187,6 @@ tab.Visible = false
 tab.BackgroundTransparency = 1
 tab.Size = UDim2.new(0.95, 0, 0.025, 0)
 
-Close.Name = "Close"
-Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Close.BackgroundTransparency = 1
-Close.BorderSizePixel = 0
-Close.Position = UDim2.new(0.8, 0, 0.1, 0)
-Close.Size = UDim2.new(0.15, 0, 0.125, 0)
-Close.Font = Enum.Font.FredokaOne
-Close.Text = "X"
-Close.TextColor3 = Color3.fromRGB(255, 0, 0)
-Close.TextScaled = true
-Close.TextSize = 14
-Close.TextWrapped = true
-Close.TextXAlignment = Enum.TextXAlignment.Right
-Close.Parent = Main
 
 ComboElem.Name = "ComboElem"
 ComboElem.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
@@ -292,38 +277,6 @@ UIAspectRatioConstraint_5.Parent = Img_2
 -- SCRIPT
 
 local TweenService = game:GetService("TweenService")
-Close.MouseButton1Click:Connect(function()
-	Logo.Active = true
-	TweenService:Create(Intro, TweenInfo.new(0.25, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {BackgroundTransparency = 0}):Play()
-
-	task.wait(0.3)
-	Logo:TweenSizeAndPosition(
-		UDim2.fromScale(0.75, 0.75),
-		UDim2.fromScale(0.5, 0.5),
-		Enum.EasingDirection.Out,
-		Enum.EasingStyle.Quad,
-		0.25, true, nil
-	)
-
-	task.wait(0.3)
-	Main:TweenSize(
-		UDim2.fromScale(0.1, 0.175),
-		Enum.EasingDirection.Out,
-		Enum.EasingStyle.Quad,
-		0.25, true, nil
-	)
-
-	task.wait(0.3)
-	for _, obj in pairs(Main:GetChildren()) do
-		if obj:IsA("GuiObject") and obj ~= Intro then
-			obj.Visible = false
-		end
-	end
-
-	TweenService:Create(Logo, TweenInfo.new(0.25, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {ImageTransparency = 0.8}):Play()
-	TweenService:Create(Intro, TweenInfo.new(0.25, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {BackgroundTransparency = 1}):Play()
-	TweenService:Create(Main, TweenInfo.new(0.25, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {BackgroundTransparency = 0.8}):Play()
-end)
 
 Logo.MouseButton1Click:Connect(function()
 	Logo.Active = false
@@ -566,3 +519,26 @@ task.wait(1.5)
 TweenService:Create(Intro, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {BackgroundTransparency = 1}):Play()
 
 return lib
+
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Godmey/UiTest/refs/heads/main/Test.lua"))()
+
+lib:SetTitle("Rimuru Hub | 4Bing")
+lib:AddButton("Button", function()
+    print("Clicked!")
+end)
+lib:AddToggle("Toggle", function(state)
+    if state then
+        print('On!')
+    else
+        print('Off!')
+    end
+end, false)
+lib:AddComboBox("ComboBox", {"1", "2", "3"}, function(selection)
+    if selection == "1" then
+        print("Selected 1")
+    elseif selection == "2" then
+        print("Selected 2")
+    elseif selection == "3" then
+        print("Selected 3")
+    end
+end)
